@@ -21,7 +21,14 @@ function doShift () {
     ent += 1
 }
 function shoShuttle (x: number, y: number) {
-    led.plotBrightness(x, y, 200)
+    if (66 == led.pointBrightness(x, y)) {
+        music.play(music.tonePlayable(988, music.beat(BeatFraction.Sixteenth)), music.PlaybackMode.InBackground)
+        sy += 1
+        if (4 < sy) {
+            sy = 4
+        }
+    }
+    led.plotBrightness(x, sy, 200)
 }
 input.onButtonPressed(Button.B, function () {
     clrShuttle(sx, sy)
