@@ -13,7 +13,12 @@ function doShift () {
             led.plotBrightness(xx, yy, led.pointBrightness(xx + 1, yy))
         }
     }
+    if (0 == ent % 5) {
+        ent = 0
+        led.plotBrightness(3, 0, 237)
+    }
     shoShuttle(sx, sy)
+    ent += 1
 }
 function shoShuttle (x: number, y: number) {
     led.plotBrightness(x, y, 200)
@@ -35,12 +40,15 @@ function mkStars () {
 function clrShuttle (x: number, y: number) {
     led.plotBrightness(x, y, 0)
 }
+let ent = 0
 let sy = 0
 let sx = 0
 sx = 1
 sy = 4
 shoShuttle(sx, sy)
 let speed = 0
+ent = 0
+led.plotBrightness(4, 0, 237)
 basic.forever(function () {
     doShift()
     mkStars()
